@@ -1,6 +1,6 @@
 // This recursively turns every property and nested object into readonly
 // Explicitly handles Arrays to ensure they remain arrays
-type DeepReadonly<T> = 
+export type DeepReadonly<T> = 
   T extends (infer R)[] ? ReadonlyArray<DeepReadonly<R>> :
   T extends Function ? T :
   T extends object ? { readonly [P in keyof T]: DeepReadonly<T[P]> } :
@@ -66,6 +66,7 @@ export enum MatchEventType {
   FreeKickWon = "free kick won",
   FreeKickLost = "free kick lost", // Foul committed
   YellowCard = "yellow card",
+  RedCard = "red card",
   Substitution = "substitution",
   AddedTime = "added time",
   StartDelay = "start delay",
@@ -128,7 +129,7 @@ interface MatchInfo {
   venue: Venue;
 }
 
-interface MessageBlock {
+export interface MessageBlock {
   language: string;
   message: MatchEvent[];
 }
