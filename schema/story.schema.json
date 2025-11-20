@@ -3,7 +3,7 @@
   "title": "Story Pack",
   "type": "object",
   "required": [
-    "pack_id",
+    "story_id",
     "title",
     "pages",
     "source",
