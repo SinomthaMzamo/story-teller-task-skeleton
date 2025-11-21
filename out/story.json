@@ -1,0 +1,62 @@
+{
+  "story_id": "celtic_kilmarnock_2025-11-21",
+  "title": "Top Moments — Celtic vs Kilmarnock",
+  "pages": [
+    {
+      "type": "cover",
+      "headline": "Celtic vs Kilmarnock",
+      "image": "../assets/placeholder.png"
+    },
+    {
+      "type": "highlight",
+      "minute": 9,
+      "headline": "GOAL — J. Kenny",
+      "caption": "Goal! Celtic 1, Kilmarnock 0. Johnny Kenny (Celtic) left footed shot from very close range to the bo",
+      "image": "../assets/placeholder.png",
+      "explanation": "base=100 | multipliers=[Tie Breaker(x1.5)]"
+    },
+    {
+      "type": "highlight",
+      "minute": 50,
+      "headline": "GOAL — K. Tierney",
+      "caption": "Goal! Celtic 2, Kilmarnock 0. Kieran Tierney (Celtic) left footed shot from outside the box to the b",
+      "image": "../assets/placeholder.png",
+      "explanation": "base=100 | multipliers=[Equalizer(x1.3)] | bonuses=[Defender Goal(+30)]"
+    },
+    {
+      "type": "highlight",
+      "minute": 84,
+      "headline": "GOAL — D. Maeda",
+      "caption": "Goal! Celtic 3, Kilmarnock 0. Daizen Maeda (Celtic) right footed shot from the right side of the box",
+      "image": "../assets/placeholder.png",
+      "explanation": "base=100"
+    },
+    {
+      "type": "highlight",
+      "minute": 91,
+      "headline": "PENALTY — Yang Hyun-Jun",
+      "caption": "Penalty Celtic. Yang Hyun-Jun draws a foul in the penalty area.",
+      "image": "../assets/placeholder.png",
+      "explanation": "base=90 | multipliers=[Late Game(x1.5), Garbage Time(x0.6)]"
+    },
+    {
+      "type": "highlight",
+      "minute": 92,
+      "headline": "GOAL — A. Engels",
+      "caption": "Goal! Celtic 4, Kilmarnock 0. Arne Engels (Celtic) converts the penalty with a right footed shot to ",
+      "image": "../assets/placeholder.png",
+      "explanation": "base=100 | multipliers=[Late Game(x1.5), Garbage Time(x0.6)]"
+    },
+    {
+      "type": "info",
+      "headline": "Full-time",
+      "body": "Final Score TBD"
+    }
+  ],
+  "metrics": {
+    "goals": 4,
+    "highlights": 5
+  },
+  "source": "./data/match_events.json",
+  "created_at": "2025-11-21T15:14:50.945Z"
+}

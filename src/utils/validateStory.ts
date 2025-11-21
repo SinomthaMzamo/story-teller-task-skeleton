@@ -15,7 +15,7 @@ if (!jsonFile) {
 }
 
 // Load JSON Schema
-const schemaPath = path.join(__dirname, "../schema/story.schema.json");
+const schemaPath = path.join(__dirname, "../../schema/story.schema.json");
 const schemaData: Schema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
 
 // Load JSON data

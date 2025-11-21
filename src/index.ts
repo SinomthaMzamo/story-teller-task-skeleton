@@ -48,9 +48,11 @@ const matchEvents: DeepReadonly<MatchEvent[]> = service.extractMatchEventData();
 const rankedEvents: ScoredEvent[] = service.rankMatchEventData(matchEvents);
 
 // 8. Create the Story Pack
-// We pass the ranked events and ask for the top 10 highlights
-const storySlides = service.createStoryPack(rankedEvents, 10);
+// We pass the ranked events and ask for the top N highlights
+const storySlides = service.createStoryPack(rankedEvents, 5);
+logPretty(storySlides);
+console.log("HERE ARE UR STORIES");
 
 // 9. Write to Disk
-service.outputStoryPack();
+service.outputStoryPack(storySlides);
 
