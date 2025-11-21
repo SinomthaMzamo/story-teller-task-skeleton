@@ -10,7 +10,7 @@
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "devStart": "NODE_OPTIONS='--loader ts-node/esm' ts-node src/index.ts",
-    "validate": "NODE_OPTIONS='--loader ts-node/esm' ts-node src/validateStory.ts",
+    "validate": "NODE_OPTIONS='--loader ts-node/esm' ts-node src/utils/validateStory.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
