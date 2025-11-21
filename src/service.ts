@@ -5,22 +5,56 @@
 // • Packages them as slides in a Story Pack
 
 import type { DeepReadonly, MatchEvent, MatchFeed, MessageBlock } from "./types/match-feed.types.js";
+import type { SquadFeed, SquadPerson } from "./types/squad.types.js"; 
 
 export class StoryPackService {
-  matchData:MatchFeed;
+  private matchData: MatchFeed;
+  private squadData: SquadFeed;
 
-  constructor(matchData: any){
+  private playerLookup = new Map<string, DeepReadonly<SquadPerson>>();
+
+  constructor(matchData: MatchFeed, squadData: SquadFeed) {
     this.matchData = matchData;
+    this.squadData = squadData;
+
+    // Build the fast lookup map immediately on startup
+    this.indexPlayers();
   }
 
-  extractMatchEventData(): DeepReadonly<MatchEvent[]>{
+  /**
+   * Flattens the nested Squad data into a quick lookup map.
+   * This makes your Heuristic Algorithm much faster and cleaner.
+   */
+  private indexPlayers() {
+    // The squad feed contains an array of squads (Home/Away)
+    for (const team of this.squadData.squad) {
+      for (const person of team.person) {
+        // We only care about people with IDs
+        if (person.id) {
+          this.playerLookup.set(person.id, person);
+        }
+      }
+    }
+    console.log(`Indexed ${this.playerLookup.size} players and coaches.`);
+  }
+
+  extractMatchEventData(): DeepReadonly<MatchEvent[]> {
     console.log(
       "This method extract the actual events of the match and gets them ready for heuristics processing"
     );
-    return this.matchData.messages.flatMap((block) => block.message);
+    const flatEvents = this.matchData.messages.flatMap(
+      (block) => block.message
+    );
+    // Sort chronologically (Crucial for the "Sequence" heuristics later)
+    return [...flatEvents].sort(
+      (a, b) =>
+        new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+    );
   }
 
-  rankMatchEventData(allMatchEvents: DeepReadonly<MatchEvent[]>): MessageBlock[] {
+  rankMatchEventData(
+    allMatchEvents: DeepReadonly<MatchEvent[]>
+  ): MessageBlock[] {
     console.log(
       "This method ranks the match events according to a heuristic algorithm"
     );
